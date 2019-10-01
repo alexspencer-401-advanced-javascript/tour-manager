@@ -1,5 +1,5 @@
 {
-  "name": "fsjs-e2e-route-model-quiz",
+  "name": "tours-lab",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "jest": "jest --runInBand",
+    "jest": "jest --runInBand --verbose",
     "test": "npm run jest",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run jest -- --watchAll",
