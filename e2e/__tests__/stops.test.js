@@ -27,16 +27,33 @@ describe('stops api', () => {
   }
 
   it('posts a stop', () => {
-    return postTour(tourModel)
-      .then(tour => {
-        return request
-          .post(`/api/stops/${tour._id}`)
-          .send(stopModel)
-          .expect(200)
-          .then(({ body }) => {
-            console.log(body);
-          });
-        
-      });
+    return postTour(tourModel).then(tour => {
+      return request
+        .post(`/api/stops/${tour._id}`)
+        .send(stopModel)
+        .expect(200)
+        .then(({ body }) => {
+          expect(body).toMatchInlineSnapshot(
+            {
+              _id: expect.any(String),
+              __v: 0
+            },
+            `
+            Object {
+              "__v": 0,
+              "_id": Any<String>,
+              "location": Object {
+                "latitude": 40.3053839,
+                "longitude": -105.8290298,
+              },
+              "weather": Object {
+                "forecast": "Clear throughout the day.",
+                "time": "2019-10-01T06:00:00.000Z",
+              },
+            }
+          `
+          );
+        });
+    });
   });
 });
