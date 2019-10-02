@@ -47,7 +47,7 @@ describe('stops api', () => {
                 "longitude": -105.8290298,
               },
               "weather": Object {
-                "forecast": "Windy until evening.",
+                "forecast": "Clear throughout the day.",
                 "time": "2019-10-02T06:00:00.000Z",
               },
             }
