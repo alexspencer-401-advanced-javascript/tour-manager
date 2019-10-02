@@ -42,4 +42,39 @@ describe('tours api', () => {
       );
     });
   });
+  it('gets all tours', () => {
+    return Promise.all([
+      postTour(tourModel),
+      postTour(tourModel),
+      postTour(tourModel)
+    ])
+      .then(() => {
+        return request.get('/api/tours').expect(200);
+      })
+      .then(({ body }) => {
+        expect(body.length).toBe(3);
+        expect(body[0]).toMatchInlineSnapshot(
+          {
+            _id: expect.any(String),
+            __v: 0,
+            launchDate: expect.any(String),
+            stops: expect.any(Array)
+          },
+          `
+          Object {
+            "__v": 0,
+            "_id": Any<String>,
+            "activities": Array [
+              "Tatooine Bar Hop",
+              "Hoth Battle",
+              "Coruscant Political Tour",
+            ],
+            "launchDate": Any<String>,
+            "stops": Any<Array>,
+            "title": "Star Tours",
+          }
+        `
+        );
+      });
+  });
 });
